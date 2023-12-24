@@ -1,6 +1,6 @@
 {
   "name": "neback",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Easy, flexible, robust, all-in-one web framework for Node.js",
   "main": "neback-core.js",
   "scripts": {
