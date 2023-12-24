@@ -77,35 +77,35 @@ This view engine supports that features:
 * if statements supports evaluation of standalone statements:
 
 {% if true %}
-    <h2>Hello!</h2>
+    \<h2>Hello!\</h2>
 {% endif %}
 
 * if statements which supports: '===', '!==', '==', '!=', '>', '<', '>=', '<=' comparisons:
 
 {% if blabla > 10 %}
-    <h2>Hello!</h2>
+    \<h2>Hello!\</h2>
 {% endif %}
 
 * if/else statements also supports standalone statements:
 
 {% if 0 %}
-    <h2>Hello!</h2>
+    \<h2>Hello!\</h2>
 {% else %}
-    <h2>Not Hello!</h2>
+    \<h2>Not Hello!\</h2>
 {% endifelse %}
 
 * if/else statements which supports: '===', '!==', '==', '!=', '>', '<', '>=', '<=' comparisons:
 
 {% if blabla > 10 %}
-    <h2>Hello!</h2>
+    \<h2>Hello!\</h2>
 {% else %}
-    <h2>Not Hello!</h2>
+    \<h2>Not Hello!\</h2>
 {% endifelse %}
 
 * for loops:
 
 {% for index, item in array %}
-    <h2>Hello, {% item.name %}, you're the {% index %} student!</h2>
+    \<h2>Hello, {% item.name %}, you're the {% index %} student!\</h2>
 {% endfor %}
 
 Planned features of that view engine as following:
