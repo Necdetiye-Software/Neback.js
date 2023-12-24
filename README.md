@@ -1,4 +1,4 @@
-# Neback.js - Easy, Flexible, Robust, All-In-One Web Framework for Node.js
+# Neback.js - Easy, Flexible, Lightweight, Robust, All-In-One Web Framework for Node.js
 
 Neback.js is brand new Backend framework for Javascript. It has express-like view, but has tons of built-in features which makes development process way more easier and also more fit to write clean and also, distributed code.
 
