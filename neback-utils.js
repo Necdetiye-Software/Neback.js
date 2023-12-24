@@ -347,10 +347,6 @@ class DdosProtector {
                 if(this.individualUsers[i].ip === req.socket.remoteAddress){
                     if(!this.individualUsers[i].isBanned){
                         this.individualUsers[i].count = this.individualUsers[i].count + 1;
-
-                        if(this.individualUsers[i].count > 1){
-                            res.setHeader("Content-Type", "text/html");
-                        }
                     }
             
                     let now = new Date().getTime();
@@ -385,13 +381,11 @@ class DdosProtector {
     banUser(req, res){
         res.statusCode = this.errorCode;
         res.setHeader("X-Ban-Reason", "Spamming")
-        res.setHeader("Content-Type", "text/html")
     }
 
     unBanUser(req, res, userId){
         res.statusCode = 200;
         res.setHeader("X-Unban-User", userId)
-        res.setHeader("Content-Type", "text/html")
     }
 
     logEverything(){

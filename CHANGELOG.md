@@ -7,3 +7,7 @@ Neback.js Framework released.
 # 0.1.1
 
 Documentation fixed. No other changes.
+
+# 0.1.2
+
+A bug about "Content-Type" headers are fixed.

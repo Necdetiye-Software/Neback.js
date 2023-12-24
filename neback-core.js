@@ -246,7 +246,7 @@ class Neback {
         if(res.statusCode >= 400 && res.statusCode <= 500){
             res.end("403 Forbidden");
         } else {
-            //res.setHeader("Content-Type", "text/html");
+            res.setHeader("Content-Type", "text/html");
             res.end(sendedThing);
         };
     };
