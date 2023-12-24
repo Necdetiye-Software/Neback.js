@@ -35,7 +35,7 @@ For initalizing a Neback server, you need to import it via either Common.js or E
 
 ```javascript
 
-let { Neback } = require("neback-core.js");
+let { Neback } = require("neback/neback-core.js");
 
 let server = new Neback();
 
@@ -124,7 +124,7 @@ You can make renderings like that:
 
 // you have to require utils module of Neback.js:
 
-let utils = require("neback-utils");
+let utils = require("neback/neback-utils");
 
 // for sake of platform agnosticism, i strongly recommend you to use ".join()" method of node.js's path modules when describing your pages place:
 
@@ -190,7 +190,7 @@ In Neback.js, you can easily use routers and distribute your controllers to make
 
 // this is your router:
 
-let { Neback } = require("neback.js");
+let { Neback } = require("neback/neback-core");
 
 let adminPanelRoutes = new Neback();
 
@@ -217,7 +217,7 @@ module.exports = {
 
 // this is your main server
 
-let { Neback } = require("neback.js");
+let { Neback } = require("neback/neback-core");
 
 let server = new Neback();
 
@@ -416,7 +416,7 @@ In Neback.js, middlewares are not blocking by default, which is the one of the b
 
 // sample middleware
 
-let { Neback } = require("neback-core.js");
+let { Neback } = require("neback/neback-core");
 
 let server = new Neback();
 
@@ -516,7 +516,7 @@ In this example, we'll make a sample database connection to MySql database:
 
 ```javascript
 
-let { Neback } = require("neback-core");
+let { Neback } = require("neback/neback-core");
 
 // you also have to install third party dependency for that
 
@@ -555,7 +555,7 @@ In Neback.js, we provide caching mechanism for our built-in view engine, which c
 
 ```javascript
 
-let { Neback } = require("neback-core");
+let { Neback } = require("neback/neback-core");
 
 let server = new Neback();
 
@@ -591,7 +591,7 @@ Or you can use `.render()` function and framework will automatically detect if c
 
 // you have to require utils package:
 
-let utils = require("neback-utils");
+let utils = require("neback/neback-utils");
 
 server.get("/", function(req, res){
     utils.render(server, res, "./index.html")
@@ -606,11 +606,11 @@ this is an example for Neback.js:
 
 ```javascript
 
-let { Neback } = require("neback-core");
+let { Neback } = require("neback/neback-core");
 
 // you have to import it from neback-utils package:
 
-let { DdosProtector } = require("neback-utils");
+let { DdosProtector } = require("neback/neback-utils");
 
 // that's your options, you can customize protector with that object, this are the default values:
 
@@ -651,7 +651,7 @@ let server = require("express")();
 
 // import that ddos protector from our utility module:
 
-let { DdosProtector } = require("neback-utils");
+let { DdosProtector } = require("neback/neback-utils");
 
 let options = {
     // define your options here
