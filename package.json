@@ -1,0 +1,22 @@
+{
+  "name": "neback",
+  "version": "0.1.0",
+  "description": "Easy, flexible, robust, all-in-one web framework for Node.js",
+  "main": "neback-core.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "framework",
+    "server",
+    "caching",
+    "all-in-one",
+    "dependency-injection"
+  ],
+  "author": "Necdet Arda Etiman",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^3.5.1"
+  }
+}
