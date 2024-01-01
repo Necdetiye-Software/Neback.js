@@ -74,6 +74,14 @@ This view engine supports that features:
 
 {% ourVariable %}
 
+* You can use basic ternary operators:
+
+for example, if you send a variable named "value" and it is "10" as type of number:
+
+{% value > 5 ? "Yes, it is!" : "No, it's Not!" %}
+
+Then the "Yes, it is!" value will be shown up on screen.
+
 * if statements supports evaluation of standalone statements:
 
 {% if true %}
@@ -110,13 +118,13 @@ This view engine supports that features:
 
 Planned features of that view engine as following:
 
-* ternary support for direct templatings
+* improving ternary support, adding support for ternary chaining
 * if/else if/else support
 * support for "logical and" and "logical or" operators for both direct templatings and if/else if templates
 * support for if, if/else and if/else if/else statements inside for loops
 * support for if, if/else and if/else if/else statements one within each oter
 
-Warning, according to my tests, it's slightly slower than ejs template engine. But if you use it with our built-in caching mechanism it's more faster. We'll describe how you can use it in next parts.
+Warning, according to my tests, it's slower than ejs template engine. But if you use it with our built-in caching mechanism it became slightly slower, which means 1-2 milliseconds. In next releases we'll try to optimize that. We'll describe how you can use it in next parts.
 
 You can make renderings like that:
 
@@ -251,8 +259,6 @@ server.post("/", function(req, res){
 
 ```
 
-Currently we don't support file handling, for that we gladly accept proper contributions.
-
 ### Route And Query Params
 
 You can reach route parameters for that specific route via `req.params` object if there is any route parameter on this route.
@@ -295,7 +301,7 @@ For example, lets we assume you have this form on your html page:
 
 ```javascript
 
-server.post("/our-post-path", function(req, res){
+server.post("/blablabla", function(req, res){
     // which will look like that and with the inputs of course: { blabla: "your input", otherOne: "your input" }
     console.log("req.body object: ", req.body) 
     // and you can reach file inputs like this:

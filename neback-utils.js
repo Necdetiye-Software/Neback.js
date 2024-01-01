@@ -32,7 +32,15 @@ function evaluateExpression(expression, data) {
             if (expression.includes(operator)) {
                 const [left, right] = expression.split(operator);
                 const leftValue = parseValues(data, left.trim());
-                const rightValue = right.trim().replace(/"/g, "");
+                let rightValue = right.trim();
+
+                if(typeof leftValue === "string") {
+                    rightValue = rightValue.replace(/"/g, "").replace(/'/g, "")
+                }
+
+                if(!isNaN(leftValue)){
+                    rightValue = Number(rightValue);
+                }
     
                 switch (operator) {
                     case '===':
@@ -78,14 +86,65 @@ function evaluateExpression(expression, data) {
         return Boolean(value);
     }
 
+
     return false;
 }
 
+function ternaryCleanup(html){
+    let splitTheHtml = html.split(" ");
+    let statementsArray = [];
+    let firstValue = [];
+
+    for(let i = 0; i < splitTheHtml.length; i++){
+        if(splitTheHtml[i] === "?"){
+            for(let p = i - 1; p > -1; p--){
+                statementsArray.push(splitTheHtml[p])
+            }
+
+            for(let z = i + 1; z < splitTheHtml.length; z++){
+                firstValue.push(splitTheHtml[z]);
+            }
+        }
+    }
+
+    let reverseAndJoinTheStatementsArray = statementsArray.reverse().join(" ");
+    let joinTheFirstValue = firstValue.join(" ");
+
+    return [reverseAndJoinTheStatementsArray, joinTheFirstValue];
+}
+
+function templateTernaryStatements(html, data){
+    let splitTheHtml = html.split(":");
+    console.log("ternary fonksiyonunun içi!")
+
+    for(let i = 0; i < splitTheHtml.length; i++){
+        console.log("bölünen ilk html: ", splitTheHtml);
+        let splitTheSplittedHtml = ternaryCleanup(splitTheHtml[i]);
+
+        console.log("true splitting for html: ", splitTheSplittedHtml);
+
+        let makeEvaluation = evaluateExpression(splitTheSplittedHtml[0], data);
+
+        if(makeEvaluation) {
+            return splitTheSplittedHtml[1];
+        } else {
+            if(!splitTheHtml[1].match(/\?\s*([^%]+)\s*:/g)){
+                return splitTheHtml[1]
+            }
+        }
+    }
+}
+
 function templateBasicStatements(html, data) {
-    return html.replace(/{%\s*([^%]+)\s*%}/g, (match, variable) => {
-        const trimmedVariable = variable.trim();
-        const value = parseValues(data, trimmedVariable);
-        return value !== undefined ? value : match;
+    return html.replace(/{%\s*([^%]+)\s*%}/g, (ourMatch, variable) => {
+        if(variable.match(/\?\s*([^%]+)\s*:/g)){
+            console.log("Ternary ile eşleşti!");
+            return templateTernaryStatements(variable, data)
+        } else {
+            const trimmedVariable = variable.trim();
+            const value = parseValues(data, trimmedVariable);
+            return value !== undefined ? value : ourMatch;
+        }
     });
 }
 
